@@ -1,4 +1,13 @@
 #!/bin/bash
+# If wordlist files not found, download them
+if [ ! -f ~/wordlists/subdomains.txt ]; then
+    wget -P ~/wordlists http://ffuf.me/wordlist/subdomains.txt
+fi
+
+if [ ! -f ~/wordlists/common.txt ]; then
+    wget -P ~/wordlists http://ffuf.me/wordlist/common.txt
+fi
+
 clear
 
 echo -e "\e[31m _    _  ____  ____ \e[0m \e[34m  ____  _  _  ____  ____  __   \e[0m"
@@ -10,14 +19,6 @@ echo ""
 echo ""
 echo ""
 echo ""
-
-if [ ! -f ~/wordlists/subdomains.txt ]; then
-    wget -P ~/wordlists http://ffuf.me/wordlist/subdomains.txt
-fi
-
-if [ ! -f ~/wordlists/common.txt ]; then
-    wget -P ~/wordlists http://ffuf.me/wordlist/common.txt
-fi
 
 # Prompt for URL
 echo -e "\e[31mEnter a URL\e[0m"
@@ -166,3 +167,4 @@ do
     ;;
   esac
 done
+
